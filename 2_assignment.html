@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Q1
+        //checks to see if a number input is greater than 928 or smaller than 532
+        var num1 = Number(prompt("Enter a number: "));
+        if (num1 > 928 || num1 < 532) {
+            console.log(`you have entered a valid num ${num1}`);
+        }
+
+        //Q2
+        var number1 = Number(prompt("Enter first number: "));
+        var number2 = Number(prompt("Enter second number: "));
+        var number3 = Number(prompt("Enter third number: "));
+        //checks if the series input is in ascending order 
+        if (number2 > number1 && number3 > number2) {
+            console.log(`Increasing series of numbers ${number1} ${number2} ${number3}`);
+        }
+
+        //Q3
+        var growing1 = Number(prompt("please enter the 1st number"));
+        var growing2 = Number(prompt("please enter the 2nd number"));
+        //checks if the series input is in ascending order
+        if (growing2 > growing1) {
+            alert("growing series");
+        }
+
+        //Q4
+        //prints to the console the result of a check whether input from user is odd or even
+        console.log((Number(prompt("Enter a number"))) % 2 == 0 ? "Even" : "Odd");
+
+
+        //Q5
+        var p = Number(prompt("enter 1st num"));
+        var p2 = Number(prompt("enter 2nd num"));
+        //prints to the console 2 numbers in order from smallest to biggest
+        if (p > p2) {
+            console.log(p2, p);
+        } else if (p2 > p) {
+            console.log(p, p2);
+        }
+
+        //Q6
+        //prints whether input is negative positive or zero
+        var isPosNegZer = Number(prompt("Enter a number: "));
+        if (isPosNegZer > 0) {
+            alert(`${isPosNegZer} is Positive`);
+        } else if (isPosNegZer < 0) {
+            alert(`${isPosNegZer} is Negative`);
+        } else {
+            alert(`${isPosNegZer} is Zero`);
+        }
+    </script>
+</body>
+
+</html>
