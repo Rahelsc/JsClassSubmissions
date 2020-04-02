@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* css of pictures */
+        
+        #upRight {
+            height: 5%;
+            width: 5%;
+            transform: rotate(180deg);
+        }
+        
+        #leftDown {
+            height: 5%;
+            width: 5%;
+        }
+        
+        #leftUp {
+            height: 5%;
+            width: 5%;
+            transform: rotate(90deg);
+        }
+        
+        #rightDown {
+            height: 5%;
+            width: 5%;
+            transform: rotate(270deg);
+        }
+        
+        #Down {
+            height: 10%;
+            width: 10%;
+        }
+        
+        #up {
+            height: 10%;
+            width: 10%;
+            transform: rotate(180deg);
+        }
+        
+        #left {
+            height: 10%;
+            width: 10%;
+            transform: rotate(90deg);
+        }
+        
+        #right {
+            height: 10%;
+            width: 10%;
+            transform: rotate(270deg);
+        }
+        
+        #center {
+            height: 10%;
+            width: 10%;
+        }
+        
+        .move {
+            position: relative;
+            left: 5%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <-- pictures of arrows -->-->
+    <picture>
+        <div class="move">
+            <img id="leftUp" src="diagonal-down left arrow.svg" />
+            <img id="up" src="down-arrow.svg" />
+            <img id="upRight" src="diagonal-down left arrow.svg" />
+        </div>
+        <div>
+            <img id="left" src="down-arrow.svg" />
+            <img id="center" src="center.svg" />
+            <img id="right" src="down-arrow.svg" />
+
+        </div>
+        <div class="move">
+            <img id="leftDown" src="diagonal-down left arrow.svg" />
+            <img id="Down" src="down-arrow.svg" />
+            <img id="rightDown" src="diagonal-down left arrow.svg" />
+        </div>
+    </picture>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+    <script>
+        // matrix definition
+        var matrix = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+
+        // loops for inserting values to array
+        for (let row = 0; row < matrix.length; row++) {
+            for (let col = 0; col < matrix[row].length; col++) {
+                if (row == col && row + col == matrix.length - 1) { //calculate the center of matrix
+                    matrix[row][col] = "Center";
+                } else if (row == col) { //calc main diagonal
+                    matrix[row][col] = "main";
+                } else if (row + col == matrix.length - 1) { //calc sub diagonal
+                    matrix[row][col] = "sub";
+                } else if (row < col) { //calc cells heigher than main
+                    matrix[row][col] = "up";
+                } else { // whats left are cells below main
+                    matrix[row][col] = "down";
+                }
+            }
+
+        }
+
+        // a series of dom calls that sets onclick event for every picture and calls the onclick function
+
+        document.getElementById("leftUp").onclick = function() {
+            onclick("leftUp")
+        };
+        document.getElementById("upRight").onclick = function() {
+            onclick("upRight")
+        };
+        document.getElementById("leftDown").onclick = function() {
+            onclick("leftDown")
+        };
+        document.getElementById("rightDown").onclick = function() {
+            onclick("rightDown")
+        };
+        document.getElementById("Down").onclick = function() {
+            onclick("Down")
+        };
+        document.getElementById("up").onclick = function() {
+            onclick("up")
+        };
+        document.getElementById("left").onclick = function() {
+            onclick("left")
+        };
+        document.getElementById("right").onclick = function() {
+            onclick("right")
+        };
+        document.getElementById("center").onclick = function() {
+            onclick("center")
+        };
+
+
+        // function that alerts contents of array to user based on position of button
+        // the pattern is :
+        // 'main' 'up' 'sub'
+        // 'down' 'center' 'up'
+        // 'sub' 'down' 'main'
+        function onclick(a) {
+            switch (a) {
+                case "leftUp":
+                    alert(matrix[0][0]);
+                    break;
+                case "upRight":
+                    alert(matrix[0][2]);
+                    break;
+                case "leftDown":
+                    alert(matrix[2][0]);
+                    break;
+                case "rightDown":
+                    alert(matrix[2][2]);
+                    break;
+                case "Down":
+                    alert(matrix[2][1]);
+                    break;
+                case "up":
+                    alert(matrix[0][1]);
+                    break;
+                case "left":
+                    alert(matrix[1][0]);
+                    break;
+                case "right":
+                    alert(matrix[1][2]);
+                    break;
+                case "center":
+                    alert(matrix[1][1]);
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
