@@ -68,6 +68,18 @@
 
         }
 
+        // second way of updating odd and even arrays
+        for (var index in arrayOfIntegers) {
+            if (arrayOfIntegers[index] % 2 == 0) { //check if even
+                even[even.length] = arrayOfIntegers[index];
+                counterEven++;
+            } else { //else not even
+                odd[odd.length] = arrayOfIntegers[index];
+                counterOdd++;
+            }
+
+        }
+
         //prints odd array
         for (var o of odd) {
             console.log(`odd element ${o}`);
