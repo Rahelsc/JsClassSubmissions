@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <title>Currency Value calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            background-color: #ffffff;
+            color: #4a32a1;
+            font-family: 'Lato', 'Arial', sans-serif;
+            font-size: 20px;
+            font-weight: 100;
+            text-rendering: optimizeLegibility;
+        }
+        
+        h1 {
+            font-size: 300%;
+            text-transform: uppercase;
+            word-spacing: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        
+        header img {
+            display: flex;
+            width: 18%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 25%;
+        }
+        
+        .container {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-evenly;
+            overflow-x: auto;
+            flex-basis: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .btn-conversion {
+            border: none;
+            border-radius: 6%;
+            background-color: #4a32a1;
+            padding: 1%;
+            color: #ffffff;
+            font-size: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-conversion:hover {
+            background-color: rgba(255, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        
+        #entry,
+        #outcome {
+            padding: 5%;
+            font-size: 100%;
+        }
+        
+        label {
+            display: block;
+            font-weight: 400;
+            color: #4a32a1;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Currency Value</h1>
+        <img src="https://p0.piqsels.com/preview/340/655/774/money-icon-dollar-giving.jpg" alt="image of currency">
+    </header>
+    <section class="container">
+        <button type="button" id="DtoN" name="DtoN" class="btn-conversion">convert from Dollar to NIS</button>
+        <button type="button" id="NtoD" name="NtoD" class="btn-conversion">convert from NIS to Dollar</button>
+        <button type="button" id="EtoN" name="EtoN" class="btn-conversion">convert from Euro to NIS</button>
+        <button type="button" id="NtoE" name="NtoE" class="btn-conversion">convert from NIS to Euro</button>
+    </section>
+    <section class="container">
+        <form>
+            <label for="entry">sum to convert</label>
+            <input type="number" id="entry" name="entry" value="0"><br><br>
+            <label for="outcome">after currency conversion</label>
+            <input type="number" id="outcome" name="outcome" value="0">
+            <p id="try"></p>
+        </form>
+    </section>
+
+    <script>
+        // fetching data from api
+        fetch('https://api.exchangeratesapi.io/latest')
+            .then(response => {
+                return response.json();
+            })
+            // loading data from api to js object
+            .then(data => {
+                var nisFromAPI = data.rates.ILS; // holds the conversion rate between euro and NIS. the value is in NIS.
+                var usdFromAPI = data.rates.USD; // holds the conversion rate between euro and USD. the value is in USD.
+
+                // grabging user input
+                var textInput = document.getElementById("entry");
+                // setting a js object for the conversion outcome
+                var textOutcome = document.getElementById("outcome");
+
+                // getting all buttons as js objects
+                var dollarToNis = document.getElementById("DtoN")
+                var nisToDollar = document.getElementById("NtoD");
+                var euroToNis = document.getElementById("EtoN");
+                var nisToEuro = document.getElementById("NtoE");
+
+                // adding an event listener to each button. "click"
+                dollarToNis.addEventListener("click", DtoN);
+                nisToDollar.addEventListener("click", NtoD);
+                euroToNis.addEventListener("click", EtoN);
+                nisToEuro.addEventListener("click", NtoE);
+
+
+                // conversion function for each button
+                function DtoN() {
+                    textOutcome.value = textInput.value * nisFromAPI / usdFromAPI;
+                }
+
+                function NtoD() {
+
+                    textOutcome.value = textInput.value * usdFromAPI / nisFromAPI;
+                }
+
+                function EtoN() {
+                    textOutcome.value = textInput.value * nisFromAPI;
+                }
+
+                function NtoE() {
+                    textOutcome.value = textInput.value / nisFromAPI;
+                }
+
+            })
+
+        // error handle.. 
+        .catch(err => {
+            console.log("no respponse from server");
+            alert("sorry! no service at the moment !");
+        })
+    </script>
+</body>
+
+</html>

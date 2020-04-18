@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class exercise 4</title>
+</head>
+
+<body>
+    <script>
+        // Q1 
+        var numFromUser = Number(prompt("please enter a number to be reversed "));
+        console.log(numFromUser);
+        var copyNum = numFromUser;
+        var placeHolder = 1; // hold the value of the position of each digit
+        var reversedNumber = 0; // end result
+        while (copyNum > 9) { // loop over num, to find if it's a number in the hundreds, thousands and so on
+            placeHolder *= 10;
+            copyNum = Math.floor(copyNum / 10);
+        }
+        for (; placeHolder >= 1; placeHolder /= 10) { // decrement from number found in prior loop to move last digit to first place
+            reversedNumber += numFromUser % 10 * placeHolder;
+            numFromUser = Math.floor(numFromUser / 10);
+        }
+        console.log(reversedNumber);
+
+        //Q2
+        var userNum = Number(prompt("please enter a number to check if prime "));
+        isPrime(userNum);
+
+        function isPrime(number) {
+            for (let numCheck = 2; numCheck < Math.sqrt(number); numCheck++) { //loop that check upto the sqrt since if a number isn't divible upto it's root number it is not divisble at all 
+                if (number % numCheck === 0) {
+                    console.log(`${number} is not a prime number and is divisible by ${numCheck}`);
+                    return false;
+                }
+                console.log(`${number} is a prime number `);
+                return true;
+            }
+
+        }
+
+        //Q3
+        function type(a) {
+            return typeof(a);
+        }
+
+        n = 7;
+        console.log(type(n));
+        n = " ";
+        console.log(type(n));
+        n = [0];
+        console.log(type(n));
+        n = function f() {
+            console.log("func")
+        };
+        console.log(type(n));
+        n = undefined;
+        console.log(type(n));
+        n = true;
+        console.log(type(n));
+    </script>
+
+
+</body>
+
+</html>
