@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class assignment 4</title>
+</head>
+
+<body>
+    <script>
+        var num1 = Number(prompt("how many seconds to wait"));
+        var num2 = Number(prompt("how many times to run"));
+        var counter = 0;
+        while (counter < num2) {
+
+            setTimeout(
+                function() {
+                    alert("count down number" + counter);
+                    counter++;
+                }, num1 * 1000 * counter
+            );
+
+
+        }
+    </script>
+</body>
+
+</html>

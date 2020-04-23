@@ -39,12 +39,10 @@
         }
         
         .container {
-            display: flex;
-            align-items: stretch;
-            justify-content: space-evenly;
-            overflow-x: auto;
-            flex-basis: 100%;
-            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
         }
         
         .btn-conversion {
@@ -64,7 +62,7 @@
         
         #entry,
         #outcome {
-            padding: 5%;
+            padding: 1%;
             font-size: 100%;
         }
         
@@ -73,6 +71,12 @@
             font-weight: 400;
             color: #4a32a1;
             margin: 10px auto;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .btn-conversion {
+                width: 100%;
+            }
         }
     </style>
 </head>
