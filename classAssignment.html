@@ -12,16 +12,17 @@
         var num1 = Number(prompt("how many seconds to wait"));
         var num2 = Number(prompt("how many times to run"));
         var counter = 0;
-        while (counter < num2) {
+        var i = 0;
+        while (i < num2) {
 
             setTimeout(
                 function() {
-                    alert("count down number" + counter);
+                    alert("count down number" + counter++);
                     counter++;
-                }, num1 * 1000 * counter
+                }, num1 * 1000 * i
             );
 
-
+            i++;
         }
     </script>
 </body>
