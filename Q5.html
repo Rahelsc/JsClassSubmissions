@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //returns the place of the first appearance of the first in the string (the lower cased word) 
+        //--> finds title of text in the body of the text
+        function songLyrics(lyrics) {
+            var titleSlice = lyrics.toLowerCase().slice(0, lyrics.indexOf(' '));
+            console.log(lyrics.indexOf(titleSlice));
+        }
+
+        //finds how many times a words appears in a string
+        function countAppearances(lyrics, wordSearched) {
+            var count = 0;
+            //lower case of word
+            var lowerWord = wordSearched.toLowerCase();
+            //splits the string to an array for search
+            var arrayOfLyrics = lyrics.split(' ');
+            for (let word of arrayOfLyrics) {
+                //if the word is found then counts our counter 
+                //(if word isn't found the result of the indexOf function is -1)
+                if (word.indexOf(lowerWord) !== (-1) || word.indexOf(wordSearched) !== (-1)) count++;
+            }
+            return count;
+
+        }
+
+        songLyrics('Titanium Lyrics You shout it out But I can\'t hear a word you say I\'m talking loud not saying much I\'m criticized but all your bullets ricochet You shoot me down, but I get up I\'m bulletproof nothing to lose Fire away, fire away Ricochet, you take your aim Fire away, fire away You shoot me down but I won\'t fall, I am titanium You shoot me down but I won\'t fall I am titanium, I am titanium, I am titanium, I am titanium Cut me down But it\'s you who has further to fall Ghost town, haunted love Raise your voice, sticks and stones may break my bones I\'m talking loud not saying much I\'m bulletproof nothing to lose Fire away, fire away Ricochet, you take your aim Fire away, fire away You shoot me down but I won\'t fall I am titanium You shoot me down but I won\'t fall I am titanium, I am titanium Stone - hard, machine gun Firing at the ones who run Stone - hard, thus bulletproof glass You shoot me down but I won\'t fall, I am titanium You shoot me down but I won\'t fall, I am titanium You shoot me down but I won \'t fall, I am titanium You shoot me down but I won\'t fall, I am titanium I am titanium ');
+        var numOfAppearance = countAppearances('Titanium Lyrics You shout it out But I can\'t hear a word you say I\'m talking loud not saying much I\'m criticized but all your bullets ricochet You shoot me down, but I get up I\'m bulletproof nothing to lose Fire away, fire away Ricochet, you take your aim Fire away, fire away You shoot me down but I won\'t fall, I am titanium You shoot me down but I won\'t fall I am titanium, I am titanium, I am titanium, I am titanium Cut me down But it\'s you who has further to fall Ghost town, haunted love Raise your voice, sticks and stones may break my bones I\'m talking loud not saying much I\'m bulletproof nothing to lose Fire away, fire away Ricochet, you take your aim Fire away, fire away You shoot me down but I won\'t fall I am titanium You shoot me down but I won\'t fall I am titanium, I am titanium Stone - hard, machine gun Firing at the ones who run Stone - hard, thus bulletproof glass You shoot me down but I won\'t fall, I am titanium You shoot me down but I won\'t fall, I am titanium You shoot me down but I won \'t fall, I am titanium You shoot me down but I won\'t fall, I am titanium I am titanium ', 'Titanium');
+        console.log(numOfAppearance);
+    </script>
+</body>
+
+</html>

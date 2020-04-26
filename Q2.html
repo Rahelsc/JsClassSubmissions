@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - setTimeOtPrintArray</title>
+</head>
+
+<body>
+
+    <script>
+        //print the array with delay
+        function printNames(names) {
+            var counter = 0;
+            for (var i = 0; i < names.length; i++) {
+                setTimeout(function() {
+                        //counter is index of array. increment in 1 to traverse the entire array
+                        console.log(names[counter++])
+                    }, 4000 * i) // the num of millisecond delay
+            }
+        }
+
+        printNames(['rahel', 'ronen', 'dov']);
+    </script>
+</body>
+
+</html>

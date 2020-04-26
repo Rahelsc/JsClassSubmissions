@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first Question - setTimeOut</title>
+</head>
+
+<body>
+    <script>
+        var sec = prompt('please enter how many seconds delay you want: ');
+        var counter = prompt('enter how many time to repeat: ');
+        //prints random number while counter from user is bigger than 0
+        while (counter) {
+            setTimeout(function() {
+                //recieves random number from the random method between 0 and 1 
+                //and mul by 11 so that the max result will be 10 (after using the floor method)
+                alert(Math.floor(Math.random() * 11))
+            }, sec * 1000)
+            counter--;
+        }
+    </script>
+</body>
+
+</html>
